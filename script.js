@@ -12,11 +12,20 @@ function renderTasks() {
     tasks.foreach((task, index)=> {
         const li = document.createElement('li');
         li.className = 'task-item' + (task.completed ? ' completed' : '');
-        li.innerHTML = `
-        <span>${task.text}</span> 
-        <button onclick="deleteTask(${index})">Delete</button>
-        `;
+
+        // Task text
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent the li click event from firing
+            deleteTask(index);
+        });
+        li.appendChild(deleteBtn);
+
+        // Toggle completion on click
         li.addEventListener('click', () => toggleTaskCompletion(index));
+
+        // Add the task to the list
         taskList.appendChild(li);
     });
 }
