@@ -13,6 +13,8 @@ function renderTasks() {
         const li = document.createElement('li');
         li.className = `task-item'${task.completed ? ' completed' : ''}`;
 
+        li.textContent = task.name;
+
         // Task text
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
@@ -20,12 +22,12 @@ function renderTasks() {
             e.stopPropagation(); // prevent the li click event from firing
             deleteTask(index);
         });
-        li.appendChild(deleteBtn);
-
+        
         // Toggle completion on click
         li.addEventListener('click', () => toggleTaskCompletion(index));
-
+        
         // Add the task to the list
+        li.appendChild(deleteBtn);
         taskList.appendChild(li);
     });
 }
