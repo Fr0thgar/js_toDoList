@@ -27,12 +27,13 @@ function renderTasks() {
 
 // Add a new task
 function addTask() {
-    const taskText = taskInput.value.trim();
-    if (taskText !== ''){
-        tasks.push({ text: taskText, completed: false });
-        taskInput.value = '';
-        saveTasks();
-        renderTasks();
+    const taskInput = document.getElementById('task-input');
+    const taskName = taskInput.value.trim(); // Get the input value
+
+    if (taskName) { // Check if the input is not empty
+        tasks.push({ name: taskName, completed: false }); // Add task to the array
+        taskInput.value = ''; // Clear the input field
+        renderTasks(); // Call renderTasks to update the display
     }
 }
 
