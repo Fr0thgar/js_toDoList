@@ -9,24 +9,17 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 // Render tasks
 function renderTasks() {
     taskList.innerHTML = '';
-    tasks.forEach((task, index)=> {
+    tasks.forEach((task, index) => {
         const li = document.createElement('li');
-        li.className = `task-item'${task.completed ? ' completed' : ''}`;
+        li.className = `task-item${task.completed ? ' completed' : ''}`;
 
-        li.textContent = task.name;
+        // Add task name to the list item
+        li.textContent = task.name; // Ensure the task name is displayed
 
-        // Task text
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevent the li click event from firing
-            deleteTask(index);
-        });
+        deleteBtn.onclick = () => deleteTask(index);
         
-        // Toggle completion on click
-        li.addEventListener('click', () => toggleTaskCompletion(index));
-        
-        // Add the task to the list
         li.appendChild(deleteBtn);
         taskList.appendChild(li);
     });
