@@ -8,7 +8,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 // Render tasks
 function renderTasks() {
-    taskList.innerHTML = '';
+    taskList.innerHTML = ''; // Clear the current list
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.className = `task-item${task.completed ? ' completed' : ''}`;
@@ -20,8 +20,8 @@ function renderTasks() {
         deleteBtn.textContent = 'Delete';
         deleteBtn.onclick = () => deleteTask(index);
         
-        li.appendChild(deleteBtn);
-        taskList.appendChild(li);
+        li.appendChild(deleteBtn); // Append the delete button to the list item
+        taskList.appendChild(li); // Append the list item to the task list
     });
 }
 
