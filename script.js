@@ -9,9 +9,9 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 // Render tasks
 function renderTasks() {
     taskList.innerHTML = '';
-    tasks.foreach((task, index)=> {
+    tasks.forEach((task, index)=> {
         const li = document.createElement('li');
-        li.className = 'task-item' + (task.completed ? ' completed' : '');
+        li.className = `task-item'${task.completed ? ' completed' : ''}`;
 
         // Task text
         const deleteBtn = document.createElement('button');
